@@ -27,7 +27,7 @@ SECRET_KEY = 'django-insecure-d@h-muw-@kt-w8a2nwwy_z%8i3n9=+ufmmlr-0zz)7i*7#^!^b
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ['bookose.com']
+ALLOWED_HOSTS = ['bookose.com', 'localhost']
 
 
 # Application definition
@@ -191,5 +191,10 @@ PASSWORD_RESET_TIMEOUT = 900  #900 Sec = 15 min
 
 
 import os
-BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+
+INSTALLED_APPS += ['corsheaders']
+
+MIDDLEWARE.insert(0, 'corsheaders.middleware.CorsMiddleware')
+
+CORS_ALLOW_ALL_ORIGINS = False  # for testing, restrict later
